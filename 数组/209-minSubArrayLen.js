@@ -7,6 +7,7 @@
 // 输出：2
 // 解释：子数组 [4,3] 是该条件下的长度最小的子数组。
 
+// 暴力解法
 var minSubArrayLen = function(target, nums) {
     var res = Number.MAX_VALUE
     for(let i=0; i<nums.length; i++) {
@@ -17,6 +18,7 @@ var minSubArrayLen = function(target, nums) {
             subLength += 1
             if (sum >= target) {
                 res = subLength < res? subLength : res
+                break
             }
         }
     }
@@ -26,6 +28,27 @@ var minSubArrayLen = function(target, nums) {
     return res
 }
 
+// 滑动窗口解法
+var minSubArrayLen2 = function(target, nums) {
+    let start, end
+    start = end = 0
+    let sum = 0
+    let len = nums.length
+    let ans = Infinity
+
+    while(end < len) {
+        sum += nums[end]
+        while(sum >= target) {
+            ans = Math.min(ans, end-start+1)
+            sum -= nums[start]
+            start++
+        }
+        end++
+    }
+    return ans === Infinity ? 0 : ans
+}
+
+
 target = 7
 nums = [2,3,1,2,4,3]
-console.log(minSubArrayLen(target, nums));
+console.log(minSubArrayLen2(target, nums));
