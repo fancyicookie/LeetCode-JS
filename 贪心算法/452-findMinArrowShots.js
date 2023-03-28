@@ -24,3 +24,6 @@ var findMinArrowShots = function(points) {
     }
     return res
 }
+
+points = [[10,16],[2,8],[1,6],[7,12]]
+console.log(findMinArrowShots(points));
