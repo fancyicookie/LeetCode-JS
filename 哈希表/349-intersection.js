@@ -1,3 +1,7 @@
+/*
+ * @Date: 2023-03-20 21:15:47
+ * @Author: Fancyicookie
+ */
 var intersection = function(nums1, nums2) {
     if(nums1.length < nums2.length) {
         const _ = nums1
@@ -12,5 +16,4 @@ var intersection = function(nums1, nums2) {
         nums1Set.has(nums[i]) && resSet.add(nums2[i])
     }
     return Array.from(resSet)
-
 }
